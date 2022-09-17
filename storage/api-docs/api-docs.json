@@ -1,0 +1,781 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Demo API Documentation",
+        "description": "Application Programming Interface Of Demo",
+        "contact": {
+            "email": "smile@tyyi.net"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "http://access_is_not_allowed_by_third_party"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "Local Machine"
+        },
+        {
+            "url": "http://api.demo.com:8000",
+            "description": "Demo Api Server"
+        }
+    ],
+    "paths": {
+        "/api/v1/cities": {
+            "get": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Get list of cities",
+                "description": "Returns list of cities",
+                "operationId": "getCities",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Stores a new city",
+                "description": "Stores record in the database",
+                "operationId": "insertCity",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/City"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/cities/{id}": {
+            "get": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Returns a single city",
+                "description": "Retreives record from database",
+                "operationId": "getCity",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the city which is asked for",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Updates a single city",
+                "description": "Updates a record in database",
+                "operationId": "122930c2c25829e631432afaa727a3ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "City's id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/City"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Delete Existing City",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteCity",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "City's id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/provinces": {
+            "get": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Get list of provinces",
+                "description": "Returns list of provinces",
+                "operationId": "getProvinces",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Province"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Stores a new province",
+                "description": "Stores record in the database",
+                "operationId": "insertProvince",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Province"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Province"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/provinces/{id}": {
+            "get": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Returns a single province",
+                "description": "Retreives record from database",
+                "operationId": "getProvince",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of the province which is asked for",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Province"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Updates a single province",
+                "description": "Updates a record in database",
+                "operationId": "3783a0efa6dbcbffeff91c2b561680b0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Province's id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Province"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Province"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Geo"
+                ],
+                "summary": "Delete Existing Province",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProvince",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Province's id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Creates a new API key for the user",
+                "description": "It will generate a new token for their login.",
+                "operationId": "Login",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResult"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/register": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Stores a new user",
+                "description": "Stores record in the database",
+                "operationId": "Register",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UserPromoteFromMemberToProviderRequest": {
+                "title": "UserPromoteFromMemberToProviderRequest",
+                "description": "Promote From Member To Provider Model",
+                "properties": {
+                    "id": {
+                        "title": "Member's User Id",
+                        "description": "Id of the member",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "nationalcode": {
+                        "title": "National Code",
+                        "description": "National code of the individual",
+                        "type": "string",
+                        "example": "3860000000"
+                    },
+                    "email": {
+                        "title": "E-Mail",
+                        "description": "Email of the individual",
+                        "type": "string",
+                        "example": "smile@tyyi.net"
+                    },
+                    "fathername": {
+                        "title": "Father's Name",
+                        "description": "Father's name of the individual",
+                        "type": "string",
+                        "example": "Mohammad"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserPromoteFromMemberToProviderRequest"
+                }
+            },
+            "UserPromoteToMemberRequest": {
+                "title": "UserPromoteToMemberRequest",
+                "description": "Promote To Member Model",
+                "properties": {
+                    "id": {
+                        "title": "User Id",
+                        "description": "Id of the user",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "city_id": {
+                        "title": "City Id",
+                        "description": "Id of the city",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserPromoteToMemberRequest"
+                }
+            },
+            "City": {
+                "title": "City",
+                "description": "City Model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "string",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the new city",
+                        "type": "string",
+                        "example": "همدان"
+                    },
+                    "province_id": {
+                        "title": "Province ID",
+                        "description": "ID of the province containing this city",
+                        "type": "integer",
+                        "format": "string",
+                        "example": 1
+                    },
+                    "latitude": {
+                        "title": "Latitude",
+                        "description": "Geographical latitude of this city",
+                        "type": "string",
+                        "example": "37° 55’ 4.008’’ N"
+                    },
+                    "longitude": {
+                        "title": "Longitude",
+                        "description": "Geographical longitude of this city",
+                        "type": "string",
+                        "example": "46° 7’ 28.085’’ E"
+                    },
+                    "phi": {
+                        "title": "Phi",
+                        "description": "Geographical φ(d) of this city",
+                        "type": "string",
+                        "example": "37.917781829834"
+                    },
+                    "lambda": {
+                        "title": "Lambda",
+                        "description": "Geographical  λ(d) of this city",
+                        "type": "string",
+                        "example": "46.1244697570801"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "City"
+                }
+            },
+            "Login": {
+                "title": "Login",
+                "description": "Login Model",
+                "properties": {
+                    "phone": {
+                        "title": "Phone",
+                        "description": "Login of the user",
+                        "type": "string",
+                        "format": "string",
+                        "example": "+989388063251"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "description": "Secret passphrase of the user",
+                        "type": "string",
+                        "format": "string",
+                        "example": "***"
+                    },
+                    "generate_new_api_key": {
+                        "title": "Generate new API key",
+                        "description": "To allow API to generate a new session",
+                        "type": "boolean",
+                        "format": "boolean",
+                        "example": false
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Login"
+                }
+            },
+            "LoginResult": {
+                "title": "Login Result",
+                "description": "Login Result Model",
+                "properties": {
+                    "username": {
+                        "title": "Username",
+                        "description": "Login of the user",
+                        "type": "string",
+                        "format": "string",
+                        "example": "guest"
+                    },
+                    "api_key": {
+                        "title": "API Key",
+                        "description": "Bearer Token Generated for Authorization",
+                        "type": "string",
+                        "format": "string",
+                        "example": "qwertyuioplkjhgfdsazxcvbnm123456"
+                    },
+                    "success": {
+                        "title": "Success",
+                        "description": "Was login successful",
+                        "type": "boolean",
+                        "format": "boolean",
+                        "example": false
+                    },
+                    "type": {
+                        "title": "Type",
+                        "description": "The user type",
+                        "type": "string",
+                        "format": "string",
+                        "example": "administrator"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "LoginResult"
+                }
+            },
+            "Province": {
+                "title": "Province",
+                "description": "Province Model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "integer",
+                        "example": 1
+                    },
+                    "slug": {
+                        "title": "slug",
+                        "description": "slug",
+                        "type": "string",
+                        "format": "string",
+                        "example": "aze"
+                    },
+                    "code": {
+                        "title": "code",
+                        "description": "code",
+                        "type": "string",
+                        "format": "string",
+                        "example": "041"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the state",
+                        "type": "string",
+                        "example": "همدان"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Province"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User Model",
+                "properties": {
+                    "phone": {
+                        "title": "Phone",
+                        "description": "Phone number of user",
+                        "type": "string",
+                        "format": "string",
+                        "example": "+989388063351"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Fullname of the user",
+                        "type": "string",
+                        "format": "string",
+                        "example": "Mohammad R. Tayyebi"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "description": "Secret Passkey",
+                        "type": "string",
+                        "format": "string",
+                        "example": "3Xample123!@#"
+                    },
+                    "api_token": {
+                        "title": "API Token",
+                        "description": "Secret random key",
+                        "type": "string",
+                        "format": "string",
+                        "example": "aabbcc112233"
+                    },
+                    "type": {
+                        "title": "Type",
+                        "description": "User type which defines permissions",
+                        "type": "string",
+                        "format": "string",
+                        "example": "administrator"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer {jwt})",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Users",
+            "description": "v1"
+        },
+        {
+            "name": "Geo",
+            "description": "v1"
+        }
+    ],
+    "security": [
+        {
+            "bearer_token": []
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+### LOGIN
+
+POST http://127.0.0.1:8000/api/v1/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123",
+  "generate_new_api_token": true
+}
+
+
+### REGISTER NEW USER
+
+POST http://127.0.0.1:8000/api/v1/register
+Content-Type: application/json
+
+{
+  "phone": "+989388063351",
+  "name": "Mohammad R. Tayyebi",
+  "password": "3Xample123!@#"
+}
+
+### PROMOTE USER TO MEMBER
+
+POST  http://127.0.0.1:8000/api/v1/member
+content-type: application/json
+
+{
+    "id": 1,
+    "city_id": 1
+}
+
+### PROMOTE USER TO PROVIDER
+
+POST  http://127.0.0.1:8000/api/v1/provider
+content-type: application/json
+
+{
+    "id": 1,
+    "nationalcode": "3860000000",
+    "fathername": "Mohammad"
+}
